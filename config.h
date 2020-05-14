@@ -5,7 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "Inconsolata for Powerline:pixelsize=22:antialias=true:autohint=true";
+static char *font2 = "JoyPixels";
 static int borderpx = 2;
 
 /*
@@ -83,7 +84,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.7;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -112,7 +113,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
-	"black",
+	"#111111",
 };
 
 
@@ -153,6 +154,7 @@ static unsigned int mousebg = 0;
  */
 ResourcePref resources[] = {
 		{ "font",         STRING,  &font },
+    { "fontalt0",     STRING,  &font2 },
 		{ "color0",       STRING,  &colorname[0] },
 		{ "color1",       STRING,  &colorname[1] },
 		{ "color2",       STRING,  &colorname[2] },
@@ -226,8 +228,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ TERMMOD,              XK_K,           kscrollup,      {.i = -1} },
+	{ TERMMOD,              XK_J,           kscrolldown,    {.i = -1} },
 };
 
 /*
